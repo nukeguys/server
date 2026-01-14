@@ -1,3 +1,4 @@
 include:
   - path: ./cloudflared/docker-compose.yml
   - path: ./n8n/docker-compose.yml
+  - path: ./glances/docker-compose.yml

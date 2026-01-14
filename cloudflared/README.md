@@ -7,6 +7,7 @@ Cloudflare Tunnel을 통해 내부 서비스를 외부에 안전하게 공개합
 | 서브도메인 | 서비스 |
 |------------|--------|
 | n8n.kkick.xyz | http://n8n:5678 |
+| monitor.kkick.xyz | http://glances:61208 |
 
 ## Tunnel 정보
 

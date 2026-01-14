@@ -1,0 +1,23 @@
+services:
+  glances:
+    image: nicolargo/glances:4.3.0.8
+    container_name: glances
+    restart: unless-stopped
+    pid: host
+    environment:
+      - GLANCES_OPT=-w
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "61208:61208"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - server-network
+
+networks:
+  server-network:
+    external: true
