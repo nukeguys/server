@@ -6,6 +6,8 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 
 > 💡 `server-network`는 `./server.sh start` 실행 시 자동으로 생성됩니다.
 
+> 🚚 **서버 이전/재설치 시**: [MIGRATION.md](MIGRATION.md) 가이드를 참고하세요.
+
 
 ## 서비스 목록
 
