@@ -20,6 +20,11 @@ services:
       - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
       - GENERIC_TIMEZONE=Asia/Seoul
       - TZ=Asia/Seoul
+      # Pruning executions
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=336
+      - EXECUTIONS_DATA_SAVE_ON_ERROR=all
+      - EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
     volumes:
       - ./data:/home/node/.n8n
     logging:
