@@ -1,9 +1,10 @@
 # Module Context
-**Role:** Workflow automation engine and database.
+**Role:** Workflow automation engine and database. Enabled for Local LLM (Ollama).
 **Dependencies:** Depends on `postgres` service defined in local `docker-compose.yml`.
 
 # Tech Stack & Constraints
 - **Core:** n8n (Docker image).
+- **Integration:** Ollama API via `host.docker.internal`.
 - **Database:** PostgreSQL.
 - **Config:** `.env` for secrets.
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.user.ollama-startup</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-c</string>
+    <string>
+      # 1. 환경 변수 등록
+      launchctl setenv OLLAMA_HOST 0.0.0.0;
+      launchctl setenv OLLAMA_ORIGINS *;
+      launchctl setenv OLLAMA_KEEP_ALIVE -1;
+      launchctl setenv OLLAMA_FLASH_ATTENTION 1;
+      launchctl setenv OLLAMA_NUM_PARALLEL 2;
+      launchctl setenv OLLAMA_MAX_LOADED_MODELS 2;
+
+      # 2. 공식 앱이 켜져 있을 수 있으므로 종료
+      pkill Ollama;
+      
+      # 3. 잠시 대기 후 재실행 (변수 적용 확정)
+      sleep 1;
+      open -a Ollama;
+    </string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>

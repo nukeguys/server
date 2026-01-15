@@ -37,6 +37,10 @@ brew install --cask tailscale
 brew install cloudflared
 ```
 
+### Ollama (Native App)
+- [ollama.com](https://ollama.com)에서 **공식 앱을 다운로드 및 설치**합니다.
+- 설치 후 한 번 실행하여 초기 설정을 완료합니다.
+
 ---
 
 ## 2. 필수 데이터 백업 & 복원
@@ -57,6 +61,14 @@ n8n의 워크플로우 실행 기록, DB 데이터 등은 볼륨 폴더에 저�
   1. 기존 서버에서 압축: `tar -czvf n8n-data.tar.gz n8n/data n8n/postgres_data`
   2. 새 서버로 전송
   3. 압축 해제: `tar -xzvf n8n-data.tar.gz`
+
+### ⚙️ 시스템 설정 (LaunchAgents)
+Ollama 공식 앱에 환경 변수를 확실하게 적용(앱 재실행 포함)하기 위한 설정 파일입니다.
+- `server/ollama/com.ollama.startup.plist` (저장소에 백업됨)
+- **복원 방법**:
+  1. `mkdir -p ~/Library/LaunchAgents`
+  2. `cp server/ollama/com.ollama.startup.plist ~/Library/LaunchAgents/`
+  3. `launchctl load ~/Library/LaunchAgents/com.ollama.startup.plist`
 
 ---
 

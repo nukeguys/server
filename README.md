@@ -12,8 +12,11 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 ## 서비스 목록
 
 | 서비스 | 설명 | 외부 URL | 내부 URL |
-|--------|------|----------|----------|
-| n8n | 워크플로우 자동화 | https://n8n.kkick.xyz | http://kkick-mini.tail1c7724.ts.net:5678 |
+| :--- | :--- | :--- | :--- |
+| **n8n** | 워크플로우 자동화 | https://n8n.kkick.xyz | http://localhost:5678 |
+| **Open WebUI** | 로컬 AI 채팅 | https://chat.kkick.xyz | http://localhost:8080 |
+| **Ollama** | AI 모델 엔진 (Native) | - | http://localhost:11434 |
+| **Glances** | 시스템 모니터링 | https://monitor.kkick.xyz | http://localhost:61208 |
 
 ## 사용법
 
@@ -37,20 +40,18 @@ cp 서비스명/.env.example 서비스명/.env
 
 ## 폴더 구조
 
+모든 서비스는 루트의 `docker-compose.yml`에 의해 통합 관리되며, 각 서비스 디렉토리는 독립적인 **표준 구조**를 따릅니다. 따라서 서비스가 추가되어도 전체 구조의 일관성은 유지됩니다.
+
 ```
 server/
-├── docker-compose.yml  # 메인 (include)
-├── server.sh           # 관리 스크립트
-├── cloudflared/
-│   ├── docker-compose.yml
-│   ├── .env            # cloudflared 환경변수 (git 미추적)
-│   └── .env.example
-└── n8n/
-    ├── docker-compose.yml
-    ├── .env            # n8n 환경변수 (git 미추적)
-    ├── .env.example
-    ├── data/           # n8n 데이터 (git 미추적)
-    └── postgres_data/  # DB 데이터 (git 미추적)
+├── docker-compose.yml      # 메인 (전체 서비스 조율)
+├── server.sh               # 통합 관리 스크립트
+└── [서비스명]/              # (예: n8n, open-webui 등)
+    ├── docker-compose.yml  # 개별 서비스 정의
+    ├── .env                # 비밀 환경변수 (Git 제외, 직접 생성 필요)
+    ├── .env.example        # 환경변수 템플릿
+    ├── AGENTS.md           # 기술 스택 및 운영 규칙
+    └── README.md           # 접속 정보 및 상세 가이드
 ```
 
 ## 새 서비스 추가하기

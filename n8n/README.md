@@ -4,10 +4,11 @@ n8n 워크플로우 자동화 서비스입니다.
 
 ## 접속 URL
 
-| 환경 | URL |
-|------|-----|
-| 외부 (Cloudflare) | https://n8n.kkick.xyz |
-| 내부 (Tailscale) | http://kkick-mini.tail1c7724.ts.net:5678 |
+| 환경 | URL | 비고 |
+| :--- | :--- | :--- |
+| **외부 (Cloudflare)** | https://n8n.kkick.xyz | 워크플로우 자동화 |
+| **내부 (Local)** | http://localhost:5678 | Mac Mini 로컬 접속 |
+| **내부 (Tailscale)** | http://kkick-mini.tail1c7724.ts.net:5678 | VPN 내부 접속 |
 
 ## 실행 방법
 

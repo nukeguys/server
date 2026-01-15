@@ -4,10 +4,11 @@ Glances는 시스템 리소스를 모니터링하는 도구입니다.
 
 ## 접속 URL
 
-| 환경 | URL |
-|------|-----|
-| 외부 (Cloudflare) | https://monitor.kkick.xyz |
-| 내부 (Tailscale) | http://kkick-mini.tail1c7724.ts.net:61208 |
+| 환경 | URL | 비고 |
+| :--- | :--- | :--- |
+| **외부 (Cloudflare)** | https://monitor.kkick.xyz | 시스템 모니터링 |
+| **내부 (Local)** | http://localhost:61208 | Mac Mini 로컬 접속 |
+| **내부 (Tailscale)** | http://kkick-mini.tail1c7724.ts.net:61208 | VPN 내부 접속 |
 
 ## 기능
 - CPU, Memory, Disk, Network 사용량 모니터링

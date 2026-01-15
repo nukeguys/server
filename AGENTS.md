@@ -40,3 +40,6 @@
 
 - **[n8n Workflow Automation](./n8n/AGENTS.md)** — Workflow logic, Postgres setup, and n8n configuration.
 - **[Cloudflare Tunnel](./cloudflared/AGENTS.md)** — External access configuration and tunnel management.
+- **[Open WebUI](./open-webui/AGENTS.md)** — User interface for Local LLM and secret key management.
+- **[Ollama (Native)](./ollama/AGENTS.md)** — Native LLM engine configuration and LaunchAgent plist management.
+- **[Glances](./glances/AGENTS.md)** — System observability and resource monitoring.
