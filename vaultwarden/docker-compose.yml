@@ -1,0 +1,27 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.32.7
+    container_name: vaultwarden
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DOMAIN=${DOMAIN}
+      # - ADMIN_TOKEN=${ADMIN_TOKEN}
+      - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
+      - INVITATIONS_ALLOWED=true
+      - SHOW_PASSWORD_HINT=false
+      - LOG_LEVEL=info
+      - TZ=Asia/Seoul
+    volumes:
+      - ./data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - server-network
+
+networks:
+  server-network:
+    external: true

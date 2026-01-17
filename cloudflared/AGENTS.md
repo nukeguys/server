@@ -1,21 +1,27 @@
-# Module Context
+# Cloudflare Tunnel Service Context
+
 **Role:** Secure tunneling for external access (n8n, Chat, Monitor).
 **Dependencies:** Connects to Cloudflare Edge.
 
-# Tech Stack & Constraints
+## Tech Stack & Constraints
+
 - **Core:** cloudflared (Docker image).
 - **Config:** `.env` for tunnel token.
 
-# Implementation Patterns
-- **Tunneling:** Uses `TUNNEL_TOKEN` from `.env`.
-- **Network:** Connects to `server-network` to route traffic to `n8n`, `open-webui`, `glances`.
+## Implementation Patterns
 
-# Testing Strategy
+- **Tunneling:** Uses `TUNNEL_TOKEN` from `.env`.
+- **Network:** Connects to `server-network` to route traffic to `n8n`, `open-webui`, `glances`, `vaultwarden`.
+
+## Testing Strategy
+
 - **Verification:** Check tunnel status in Cloudflare Dashboard.
 - **Logs:** Check `docker compose logs -f cloudflared`.
 
-# Local Golden Rules
-## Do's & Don'ts
+## Local Golden Rules
+
+### Do's & Don'ts
+
 - **DO** protect the `TUNNEL_TOKEN` at all costs.
 - **DO** ensure the container is on the same network (`server-network`) as the services it proxies.
 - **DO** use Docker service names (e.g., `open-webui:8080`) for Ingress rules.

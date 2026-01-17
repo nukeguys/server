@@ -4,11 +4,12 @@ Cloudflare Tunnel을 통해 내부 서비스를 외부에 안전하게 공개합
 
 ## 설정된 Public Hostnames
 
-| 서브도메인 | 서비스 | 비고 |
-| :--- | :--- | :--- |
-| n8n.kkick.xyz | http://n8n:5678 | 워크플로우 자동화 |
-| monitor.kkick.xyz | http://glances:61208 | 시스템 모니터링 (Email Auth) |
-| chat.kkick.xyz | http://open-webui:8080 | 로컬 AI 채팅 |
+| 서브도메인 | 서비스                 | 비고                         |
+| :--------- | :--------------------- | :--------------------------- |
+| n8n        | http://n8n:5678        | 워크플로우 자동화            |
+| monitor    | http://glances:61208   | 시스템 모니터링 (Email Auth) |
+| chat       | http://open-webui:8080 | 로컬 AI 채팅                 |
+| vault      | http://vaultwarden:80  | 비밀번호 관리                |
 
 ## Tunnel 정보
 
@@ -21,7 +22,7 @@ Cloudflare Tunnel을 통해 내부 서비스를 외부에 안전하게 공개합
 2. Networks → Tunnels → mini-tunnel 선택
 3. Public Hostname 추가
    - Subdomain: 원하는 서브도메인
-   - Domain: kkick.xyz
+   - Domain: example.com
    - Service: `http://컨테이너명:포트`
 
 > 서비스가 `server-network`에 연결되어 있어야 cloudflared에서 접근 가능
@@ -34,7 +35,7 @@ Glances 등 로그인 기능이 약한 서비스를 외부에 공개할 때는 *
 2. **Add an application** > Self-hosted 선택
 3. **Application Configuration**:
    - Application name: `Monitor` (예시)
-   - Domain: `monitor.kkick.xyz`
+   - Domain: `monitor.example.com`
 4. **Policies**:
    - Access Policy 생성 (예: `Allow Email`)
    - Action: `Allow`

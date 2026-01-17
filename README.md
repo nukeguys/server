@@ -5,18 +5,18 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 ## 사전 준비
 
 > 💡 `server-network`는 `./server.sh start` 실행 시 자동으로 생성됩니다.
-
+>
 > 🚚 **서버 이전/재설치 시**: [MIGRATION.md](MIGRATION.md) 가이드를 참고하세요.
-
 
 ## 서비스 목록
 
-| 서비스 | 설명 | 외부 URL | 내부 URL |
-| :--- | :--- | :--- | :--- |
-| **n8n** | 워크플로우 자동화 | https://n8n.kkick.xyz | http://localhost:5678 |
-| **Open WebUI** | 로컬 AI 채팅 | https://chat.kkick.xyz | http://localhost:8080 |
-| **Ollama** | AI 모델 엔진 (Native) | - | http://localhost:11434 |
-| **Glances** | 시스템 모니터링 | https://monitor.kkick.xyz | http://localhost:61208 |
+| 서비스          | 설명                  | 내부 URL               |
+| :-------------- | :-------------------- | :--------------------- |
+| **n8n**         | 워크플로우 자동화     | http://localhost:5678  |
+| **Open WebUI**  | 로컬 AI 채팅          | http://localhost:8080  |
+| **Ollama**      | AI 모델 엔진 (Native) | http://localhost:11434 |
+| **Glances**     | 시스템 모니터링       | http://localhost:61208 |
+| **Vaultwarden** | 비밀번호 관리         | http://localhost:3012  |
 
 ## 사용법
 
@@ -42,7 +42,7 @@ cp 서비스명/.env.example 서비스명/.env
 
 모든 서비스는 루트의 `docker-compose.yml`에 의해 통합 관리되며, 각 서비스 디렉토리는 독립적인 **표준 구조**를 따릅니다. 따라서 서비스가 추가되어도 전체 구조의 일관성은 유지됩니다.
 
-```
+```text
 server/
 ├── docker-compose.yml      # 메인 (전체 서비스 조율)
 ├── server.sh               # 통합 관리 스크립트
@@ -58,15 +58,19 @@ server/
 
 1. 서비스 폴더 생성: `mkdir 서비스명`
 2. `서비스명/docker-compose.yml` 작성 (networks에 아래 추가)
+
    ```yaml
    networks:
      server-network:
        external: true
    ```
+
 3. `서비스명/.env.example` 및 `.env` 생성
 4. `docker-compose.yml`에 include 추가:
+
    ```yaml
    - path: ./서비스명/docker-compose.yml
      env_file: ./서비스명/.env
    ```
+
 5. Cloudflare 대시보드에서 Public Hostname 추가 (외부 공개 시)
