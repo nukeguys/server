@@ -6,7 +6,14 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 
 > 💡 `server-network`는 `./server.sh start` 실행 시 자동으로 생성됩니다.
 >
-> 🚚 **서버 이전/재설치 시**: [MIGRATION.md](MIGRATION.md) 가이드를 참고하세요.
+> 🚚 **서버 이전/재설치 시**: [MIGRATION.md](MIGRATION.md) 가이드 참고
+
+## 보안 및 접속 정책 (Access Policy)
+
+- **공개 서비스**: Cloudflare Tunnel을 통해 외부 도메인으로 접근 가능 (n8n, Vaultwarden 등)
+- **내부 서비스 (보통 모니터링)**: **Uptime Kuma, Glances** 등은 보안상 외부로 공개하지 않습니다.
+- **원격 접속**: 외부에서 내부 서비스에 접근할 때는 **Tailscale (VPN)**을 사용합니다.
+  - Tailscale IP 또는 정해진 MagicDNS 주소를 사용하여 안전하게 접근합니다.
 
 ## 서비스 목록
 
@@ -25,6 +32,7 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
   ```bash
   glances
   ```
+- **💡 Tip**: 웹 브라우저 접속 없이 터미널(`brew install glances`)에서 바로 확인하는 것이 가장 빠르고 안전합니다.
 
 ## 사용법
 

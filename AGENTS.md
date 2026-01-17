@@ -39,7 +39,11 @@
 ### Maintenance Policy
 
 - Update this file if the global operational script `./server.sh` changes.
-- **Change History:** Note reasons for updates at the bottom of files.
+
+### Security & Networking
+
+- **Exposition Policy:** Monitoring services (Uptime Kuma, Glances) MUST NOT be exposed via Cloudflare Tunnel. Use Tailscale for remote access.
+- **Secrets:** Never hardcode secrets; always use `.env` files.
 
 ## Context Map (Action-Based Routing)
 

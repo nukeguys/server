@@ -4,9 +4,12 @@
 
 ## 접속 URL
 
-| 환경      | URL                   | 비고               |
-| :-------- | :-------------------- | :----------------- |
-| **Local** | http://localhost:3001 | Mac Mini 로컬 접속 |
+| 환경       | URL                     | 비고               |
+| :--------- | :---------------------- | :----------------- |
+| **Local**  | http://localhost:3001   | Mac Mini 로컬 접속 |
+| **Remote** | Tailscale VPN 주소 사용 | 원격 안전 접속     |
+
+> 🔒 **Security Note**: Uptime Kuma는 보안상 외부(Cloudflare)로 공개하지 않으며, 원격지에서는 Tailscale VPN을 통해서만 접근합니다.
 
 ## 주요 기능
 
