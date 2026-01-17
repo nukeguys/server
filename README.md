@@ -10,13 +10,21 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 
 ## 서비스 목록
 
-| 서비스          | 설명                  | 내부 URL               |
-| :-------------- | :-------------------- | :--------------------- |
-| **n8n**         | 워크플로우 자동화     | http://localhost:5678  |
-| **Open WebUI**  | 로컬 AI 채팅          | http://localhost:8080  |
-| **Ollama**      | AI 모델 엔진 (Native) | http://localhost:11434 |
-| **Glances**     | 시스템 모니터링       | http://localhost:61208 |
-| **Vaultwarden** | 비밀번호 관리         | http://localhost:3012  |
+| 서비스          | 설명                   | 내부 URL               |
+| :-------------- | :--------------------- | :--------------------- |
+| **n8n**         | 워크플로우 자동화      | http://localhost:5678  |
+| **Open WebUI**  | 로컬 AI 채팅           | http://localhost:8080  |
+| **Ollama**      | AI 모델 엔진 (Native)  | http://localhost:11434 |
+| **Glances**     | 시스템 모니터링        | http://localhost:61208 |
+| **Vaultwarden** | 비밀번호 관리          | http://localhost:3012  |
+| **Uptime Kuma** | 서비스 가용성 모니터링 | http://localhost:3001  |
+
+## 모니터링 (CLI)
+
+- **Glances**: 시스템 리소스 및 Docker 상태 실시간 확인
+  ```bash
+  glances
+  ```
 
 ## 사용법
 

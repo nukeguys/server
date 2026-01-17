@@ -49,3 +49,4 @@
 - **[Ollama (Native)](./ollama/AGENTS.md)** — Native LLM engine configuration and LaunchAgent plist management.
 - **[Glances](./glances/AGENTS.md)** — System observability and resource monitoring.
 - **[Vaultwarden](./vaultwarden/AGENTS.md)** — Self-hosted Bitwarden-compatible password manager.
+- **[Uptime Kuma](./uptime-kuma/AGENTS.md)** — Service availability monitoring and alerting.

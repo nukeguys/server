@@ -21,3 +21,7 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+netdata/cache/
+netdata/lib/
+netdata/config/
+uptime-kuma/data/
