@@ -39,7 +39,7 @@ case "$1" in
     docker compose ps
     ;;
   logs)
-    docker compose logs -f ${@:2}
+    docker compose logs -f "${@:2}"
     ;;
   *)
     echo "Usage: $0 {start|stop|restart|status|logs [service]}"

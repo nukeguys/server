@@ -7,7 +7,7 @@
 
 - **Core:** Glances (nicolargo/glances).
 - **Mode:** Web Server (`-w` flag).
-- **Security:** Exposed via Cloudflare Tunnel.
+- **Security:** Internal only. Access via Tailscale for remote use (not exposed via Cloudflare Tunnel).
 
 ## Operational Commands
 

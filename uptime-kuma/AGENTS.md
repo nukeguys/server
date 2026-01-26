@@ -13,7 +13,7 @@
 | n8n         | HTTP       | http://n8n:5678        |
 | Open WebUI  | HTTP       | http://open-webui:8080 |
 | Vaultwarden | HTTP       | http://vaultwarden:80  |
-| Netdata     | HTTP       | http://netdata:19999   |
+| Glances     | HTTP       | http://glances:61208   |
 
 ## Notification Channels
 

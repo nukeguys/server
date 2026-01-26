@@ -17,7 +17,7 @@
 ### Immutable
 
 - **Strict 500-Line Limit:** Keep this and all `AGENTS.md` files under 500 lines.
-- **No Emojis:** Use text only.
+- **No Emojis (AGENTS.md only):** Use text only in all AGENTS.md files.
 - **Root Authority:** Using `./server.sh` is the preferred method for managing the full stack.
 
 ### Do's & Don'ts

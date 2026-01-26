@@ -23,7 +23,7 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 | **Open WebUI**  | 로컬 AI 채팅           | http://localhost:8080  |
 | **Ollama**      | AI 모델 엔진 (Native)  | http://localhost:11434 |
 | **Glances**     | 시스템 모니터링        | http://localhost:61208 |
-| **Vaultwarden** | 비밀번호 관리          | http://localhost:3012  |
+| **Vaultwarden** | 비밀번호 관리          | (Tunnel only)          |
 | **Uptime Kuma** | 서비스 가용성 모니터링 | http://localhost:3001  |
 
 ## 모니터링 (CLI)
