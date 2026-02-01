@@ -5,3 +5,4 @@ include:
   - path: ./open-webui/docker-compose.yml
   - path: ./vaultwarden/docker-compose.yml
   - path: ./uptime-kuma/docker-compose.yml
+  - path: ./trafilatura/docker-compose.yml
