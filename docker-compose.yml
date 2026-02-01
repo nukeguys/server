@@ -6,3 +6,4 @@ include:
   - path: ./vaultwarden/docker-compose.yml
   - path: ./uptime-kuma/docker-compose.yml
   - path: ./trafilatura/docker-compose.yml
+  - path: ./crawl4ai/docker-compose.yml
