@@ -16,7 +16,7 @@ class ScrapeResponse(BaseModel):
     url: str
     title: str | None = None
     text: str
-    method: str  # trafilatura, dynamic, stealthy
+    method: str  # http, dynamic, stealthy
     success: bool = True
 
 

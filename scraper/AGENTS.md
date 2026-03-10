@@ -29,7 +29,9 @@ Content-Type: application/json
 {"url": "https://example.com/article"}
 ```
 
-Fallback 순서: Trafilatura → DynamicFetcher → StealthyFetcher
+Fallback 순서: HTTP fetch + Trafilatura 추출 → DynamicFetcher + Trafilatura 추출 → StealthyFetcher + Trafilatura 추출
+
+`method`는 최종 성공 단계를 의미하며 값은 `http`, `dynamic`, `stealthy` 중 하나다.
 
 ### Trafilatura
 
@@ -64,14 +66,14 @@ POST /scrapling/stealthy   # StealthyFetcher: 봇 차단 우회 (URL → HTML)
 ## Operational Commands
 
 ```bash
-# 이미지 빌드 및 시작
-docker compose up -d --build
+# 전체 스택 시작
+./server.sh start
 
-# 로그 확인
-docker compose logs -f scraper
+# 전체 스택에서 scraper 로그 확인
+./server.sh logs scraper
 
-# 재시작
-docker compose restart scraper
+# 전체 스택 재시작
+./server.sh restart
 
 # 헬스체크
 curl http://localhost:8000/health
@@ -89,4 +91,5 @@ curl -X POST http://localhost:8000/scrape \
 - **DO** use `http://scraper:8000` when calling from n8n (container name resolution).
 - **DO** use `http://localhost:8000` when testing from host machine.
 - **DO** configure log rotation (`max-size: "10m"`) in `docker-compose.yml`.
+- **DO** remember that `dynamic` and `stealthy` use browser rendering and can be slower than plain HTTP fetch.
 - **DON'T** expose this service externally (no Cloudflare tunnel needed).
