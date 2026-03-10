@@ -32,6 +32,7 @@ Content-Type: application/json
 Fallback 순서: HTTP fetch + Trafilatura 추출 → DynamicFetcher + Trafilatura 추출 → StealthyFetcher + Trafilatura 추출
 
 `method`는 최종 성공 단계를 의미하며 값은 `http`, `dynamic`, `stealthy` 중 하나다.
+Cloudflare 챌린지나 접근 차단 페이지가 감지되면 해당 단계는 실패로 처리하고 다음 단계로 넘어간다.
 
 ### Trafilatura
 
@@ -62,6 +63,7 @@ POST /scrapling/stealthy   # StealthyFetcher: 봇 차단 우회 (URL → HTML)
 - **Internal Only:** No external exposure. Only accessible within `server-network`.
 - **Stateless:** No persistent data. Can be restarted without data loss.
 - **n8n Integration:** Use HTTP Request node with URL `http://scraper:8000/scrape`.
+- **Blocked Response Handling:** Cloudflare challenge or access denied pages are treated as scrape failures, and `/scrape` returns 502 if no valid content is extracted.
 
 ## Operational Commands
 

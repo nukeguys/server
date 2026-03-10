@@ -39,6 +39,7 @@ Trafilatura + Scrapling 통합 웹 스크래핑 API 서비스입니다.
 4. 텍스트 길이 기준을 넘는 결과를 우선 반환하고, 모두 기준 미달이면 가장 긴 결과를 반환
 
 응답의 `method`는 최종적으로 채택된 단계를 의미하며, 가능한 값은 `http`, `dynamic`, `stealthy`입니다.
+Cloudflare 챌린지나 접근 차단 페이지가 감지되면 해당 단계는 실패로 간주하고 다음 단계로 넘어갑니다.
 
 ## 요청 / 응답 예시
 
@@ -60,11 +61,14 @@ curl -X POST http://localhost:8000/scrape \
 
 `/trafilatura/extract`와 `/trafilatura/convert`는 본문 추출 전용이고, `/scrapling/*` 엔드포인트는 HTML 원문 수집 전용입니다.
 
+모든 단계가 차단 페이지이거나 본문 추출에 실패하면 `/scrape`는 `502 Bad Gateway`를 반환합니다.
+
 ## 운영 메모
 
 - 전체 스택 시작/중지/로그 확인은 루트에서 `./server.sh` 사용을 우선합니다.
 - 호스트 테스트 URL은 `http://localhost:8000`, 컨테이너 간 호출 URL은 `http://scraper:8000`입니다.
 - `dynamic`, `stealthy` 단계는 브라우저 렌더링을 사용하므로 정적 요청보다 느릴 수 있습니다.
+- 일부 사이트는 Cloudflare 챌린지나 봇 방어 정책 때문에 우회되지 않을 수 있습니다.
 
 ## 접속 정보
 
