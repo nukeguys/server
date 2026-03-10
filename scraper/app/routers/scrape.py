@@ -33,6 +33,13 @@ async def scrape(request: UrlRequest):
     for method, fetch_fn in steps:
         try:
             fetched = await fetch_fn(url)
+            block_reason = scrapling_service.detect_blocked_response(
+                fetched["html"],
+                fetched.get("status"),
+            )
+            if block_reason:
+                logger.warning("%s 차단 페이지 감지 (%s): %s", method, block_reason, url)
+                continue
             result = await asyncio.to_thread(trafilatura_service.extract_from_html, fetched["html"], url)
             if not result:
                 continue
