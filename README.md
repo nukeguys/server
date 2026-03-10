@@ -25,7 +25,7 @@ Mac Mini 홈 서버 Docker 구성 저장소입니다.
 | **Glances**     | 시스템 모니터링        | http://localhost:61208 |
 | **Vaultwarden** | 비밀번호 관리          | (Tunnel only)          |
 | **Uptime Kuma** | 서비스 가용성 모니터링 | http://localhost:3001  |
-| **Crawl4AI**    | CSR 페이지 크롤링      | http://localhost:11235 |
+| **Scraper**     | 통합 웹 스크래핑       | http://localhost:8000  |
 
 ## 모니터링 (CLI)
 
