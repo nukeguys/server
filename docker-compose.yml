@@ -5,5 +5,4 @@ include:
   - path: ./open-webui/docker-compose.yml
   - path: ./vaultwarden/docker-compose.yml
   - path: ./uptime-kuma/docker-compose.yml
-  - path: ./trafilatura/docker-compose.yml
-  - path: ./crawl4ai/docker-compose.yml
+  - path: ./scraper/docker-compose.yml

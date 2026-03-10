@@ -1,0 +1,5 @@
+fastapi==0.115.12
+uvicorn==0.34.2
+trafilatura==2.0.0
+scrapling==0.2.99
+fastapi-mcp==0.4.0

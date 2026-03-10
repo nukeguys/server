@@ -1,11 +1,11 @@
 services:
-  trafilatura:
-    image: theosun/trafilatura-api:latest
-    container_name: trafilatura
-    platform: linux/amd64
+  scraper:
+    build: .
+    container_name: scraper
     restart: unless-stopped
+    shm_size: "1g"
     ports:
-      - "5001:5000"
+      - "8000:8000"
     logging:
       driver: json-file
       options:
