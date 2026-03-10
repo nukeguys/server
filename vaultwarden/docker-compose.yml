@@ -1,6 +1,6 @@
 services:
   vaultwarden:
-    image: vaultwarden/server:1.32.7
+    image: vaultwarden/server:1.35.4
     container_name: vaultwarden
     restart: unless-stopped
     env_file: .env
@@ -19,6 +19,9 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    # ports:
+    #   - "127.0.0.1:8006:80"    # Web UI
+    #   - "127.0.0.1:3012:3012"  # WebSocket Notifications
     networks:
       - server-network
 
