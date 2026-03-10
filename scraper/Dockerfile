@@ -16,11 +16,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Playwright Chromium 설치
-RUN playwright install --with-deps chromium
-
-# Camoufox Firefox 브라우저 설치 (StealthyFetcher용)
-RUN playwright install-deps firefox && camoufox fetch
+# Playwright Chromium + Camoufox Firefox 브라우저 설치
+RUN playwright install --with-deps chromium \
+    && playwright install-deps firefox \
+    && camoufox fetch
 
 # certifi가 시스템 인증서를 사용하도록 심볼릭 링크
 RUN CERTIFI_PATH=$(python -c "import certifi; print(certifi.where())") && \

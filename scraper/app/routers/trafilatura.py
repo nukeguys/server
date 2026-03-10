@@ -17,9 +17,9 @@ def extract(request: UrlRequest):
 
     result = trafilatura_service.extract_from_url(url)
     if not result:
-        raise HTTPException(status_code=422, detail="본문을 추출할 수 없습니다.")
+        raise HTTPException(status_code=502, detail="본문을 추출할 수 없습니다.")
 
-    return TrafilaturaResponse(url=url, **result)
+    return TrafilaturaResponse(url=url, text=result["text"], title=result.get("title"))
 
 
 @router.post("/convert", response_model=TrafilaturaResponse, summary="HTML에서 본문 추출")
@@ -31,4 +31,4 @@ def convert(request: HtmlRequest):
     if not result:
         raise HTTPException(status_code=422, detail="본문을 추출할 수 없습니다.")
 
-    return TrafilaturaResponse(url=request.url, **result)
+    return TrafilaturaResponse(url=request.url, text=result["text"], title=result.get("title"))
