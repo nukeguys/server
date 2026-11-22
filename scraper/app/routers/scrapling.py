@@ -32,13 +32,13 @@ async def fetch(request: UrlRequest):
     return await _handle_fetch(str(request.url), "fetch", scrapling_service.fetch)
 
 
-@router.post("/dynamic", response_model=ScraplingResponse, summary="DynamicFetcher 스크래핑")
+@router.post("/dynamic", response_model=ScraplingResponse, summary="Playwright 스크래핑")
 async def dynamic(request: UrlRequest):
-    """Playwright 기반 DynamicFetcher로 CSR 페이지를 렌더링한다."""
+    """Playwright로 CSR 페이지를 렌더링한다."""
     return await _handle_fetch(str(request.url), "dynamic", scrapling_service.dynamic_fetch)
 
 
 @router.post("/stealthy", response_model=ScraplingResponse, summary="StealthyFetcher 스크래핑")
 async def stealthy(request: UrlRequest):
-    """Camoufox 기반 StealthyFetcher로 봇 차단을 우회한다."""
+    """Scrapling StealthyFetcher로 페이지를 렌더링한다."""
     return await _handle_fetch(str(request.url), "stealthy", scrapling_service.stealthy_fetch)

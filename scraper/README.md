@@ -4,7 +4,7 @@ Trafilatura + Scrapling 통합 웹 스크래핑 API 서비스입니다.
 
 ## 주요 기능
 
-- **통합 스크래핑** (`/scrape`): Fallback 로직으로 자동 재시도 (HTTP fetch + Trafilatura 추출 → DynamicFetcher + Trafilatura 추출 → StealthyFetcher + Trafilatura 추출)
+- **통합 스크래핑** (`/scrape`): Fallback 로직으로 자동 재시도 (HTTP fetch + Trafilatura 추출 → Playwright + Trafilatura 추출 → StealthyFetcher + Trafilatura 추출)
 - **Trafilatura**: URL/HTML에서 본문 추출
 - **Scrapling**: 단순 HTTP, CSR 렌더링, 봇 차단 우회
 - **MCP 노출**: `/scrape` 엔드포인트를 MCP 도구로 자동 노출
@@ -68,6 +68,7 @@ curl -X POST http://localhost:8000/scrape \
 - 전체 스택 시작/중지/로그 확인은 루트에서 `./server.sh` 사용을 우선합니다.
 - 호스트 테스트 URL은 `http://localhost:8000`, 컨테이너 간 호출 URL은 `http://scraper:8000`입니다.
 - `dynamic`, `stealthy` 단계는 브라우저 렌더링을 사용하므로 정적 요청보다 느릴 수 있습니다.
+- `/trafilatura/extract`는 외부 공개 주소만 요청하며, 루프백과 사설 IP 주소는 Trafilatura의 기본 보안 정책으로 차단됩니다.
 - 일부 사이트는 Cloudflare 챌린지나 봇 방어 정책 때문에 우회되지 않을 수 있습니다.
 
 ## 접속 정보

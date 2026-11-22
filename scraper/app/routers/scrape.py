@@ -15,7 +15,7 @@ async def scrape(request: UrlRequest):
     """
     Fallback 흐름:
     1. 단순 HTTP fetch → Trafilatura 본문 추출
-    2. DynamicFetcher → Trafilatura 본문 추출
+    2. Playwright → Trafilatura 본문 추출
     3. StealthyFetcher → Trafilatura 본문 추출
     """
     url = str(request.url)

@@ -1,6 +1,7 @@
 import asyncio
 
-from scrapling.fetchers import Fetcher, PlayWrightFetcher, StealthyFetcher
+from playwright.async_api import async_playwright
+from scrapling.fetchers import Fetcher, StealthyFetcher
 
 CHALLENGE_MARKERS = (
     "just a moment",
@@ -40,10 +41,16 @@ async def fetch(url: str) -> dict:
 
 
 async def dynamic_fetch(url: str, headless: bool = True, wait: float = 0) -> dict:
-    """Playwright 기반 DynamicFetcher로 CSR 페이지를 렌더링한다."""
-    return await asyncio.to_thread(_fetch_sync, url, PlayWrightFetcher, headless=headless, wait=wait)
+    """Playwright로 CSR 페이지를 렌더링한다."""
+    async with async_playwright() as playwright:
+        browser = await playwright.chromium.launch(headless=headless)
+        page = await browser.new_page()
+        response = await page.goto(url)
+        if wait > 0:
+            await page.wait_for_timeout(wait)
+        return {"html": await page.content(), "status": response.status if response else None}
 
 
 async def stealthy_fetch(url: str, headless: bool = True, wait: float = 0) -> dict:
-    """Camoufox 기반 StealthyFetcher로 봇 차단을 우회한다."""
+    """Scrapling StealthyFetcher로 페이지를 렌더링한다."""
     return await asyncio.to_thread(_fetch_sync, url, StealthyFetcher, headless=headless, wait=wait)

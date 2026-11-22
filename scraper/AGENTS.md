@@ -7,7 +7,7 @@
 
 - **Framework:** FastAPI (Python 3.12)
 - **본문 추출:** Trafilatura
-- **브라우저 크롤링:** Scrapling (PlayWrightFetcher, StealthyFetcher)
+- **브라우저 크롤링:** Playwright, Scrapling StealthyFetcher
 - **MCP 노출:** fastapi-mcp
 - **Network:** Internal access via `server-network`. Accessible from n8n as `http://scraper:8000`.
 - **Port:** 8000 (host) → 8000 (container).
@@ -29,7 +29,7 @@ Content-Type: application/json
 {"url": "https://example.com/article"}
 ```
 
-Fallback 순서: HTTP fetch + Trafilatura 추출 → DynamicFetcher + Trafilatura 추출 → StealthyFetcher + Trafilatura 추출
+Fallback 순서: HTTP fetch + Trafilatura 추출 → Playwright + Trafilatura 추출 → StealthyFetcher + Trafilatura 추출
 
 `method`는 최종 성공 단계를 의미하며 값은 `http`, `dynamic`, `stealthy` 중 하나다.
 Cloudflare 챌린지나 접근 차단 페이지가 감지되면 해당 단계는 실패로 처리하고 다음 단계로 넘어간다.
@@ -45,7 +45,7 @@ POST /trafilatura/convert   # HTML → 본문 추출
 
 ```
 POST /scrapling/fetch      # 단순 HTTP (URL → HTML)
-POST /scrapling/dynamic    # DynamicFetcher: CSR 렌더링 (URL → HTML)
+POST /scrapling/dynamic    # Playwright: CSR 렌더링 (URL → HTML)
 POST /scrapling/stealthy   # StealthyFetcher: 봇 차단 우회 (URL → HTML)
 ```
 

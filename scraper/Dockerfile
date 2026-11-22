@@ -1,10 +1,11 @@
-FROM python:3.12.13-slim
+FROM python:3.12.16-slim
 
-# 시스템 의존성 (Playwright, Camoufox 등에 필요)
+# 시스템 인증서와 Playwright 설치 의존성
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     wget \
     gnupg \
+    libatomic1 \
     && rm -rf /var/lib/apt/lists/*
 
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
@@ -16,10 +17,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Playwright Chromium + Camoufox Firefox 브라우저 설치
 RUN playwright install --with-deps chromium \
-    && playwright install-deps firefox \
-    && camoufox fetch
+    && patchright install chromium
 
 # certifi가 시스템 인증서를 사용하도록 심볼릭 링크
 RUN CERTIFI_PATH=$(python -c "import certifi; print(certifi.where())") && \
