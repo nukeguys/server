@@ -12,7 +12,7 @@
 
 ## Implementation Patterns
 
-- **Data Persistence:** Uses `./data` for n8n files and `./postgres_data` for database.
+- **Data Persistence:** Uses `./data` for n8n files and `./postgres_data/pg19-store` for database.
 - **Network:** Connects to external `server-network`.
 
 ## Testing Strategy
